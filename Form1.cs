@@ -207,16 +207,6 @@ namespace laba1
         private void allToolStripMenuItem_Click(object sender, EventArgs e) { inputTextBox.SelectAll(); }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e) {
-            DialogResult result = MessageBox.Show("Сохранить изменения перед выходом?", "Подтверждение", MessageBoxButtons.YesNoCancel);
-            if (result == DialogResult.Yes)
-            {
-                Save();
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                // Отмена закрытия формы
-                return;
-            }
 
             Application.Exit();
 
@@ -253,5 +243,21 @@ namespace laba1
             outputTextBox.Height = splitContainer1.Panel2.Height;
         }
 
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Сохранить изменения перед выходом?", "Подтверждение", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                Save();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                // Отмена закрытия формы
+                return;
+            }
+
+            //Application.Exit();
+
+        }
     }
 }
