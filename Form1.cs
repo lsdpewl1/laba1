@@ -32,12 +32,12 @@ namespace laba1
             layoutLabel.Text = "Раскладка: " + currentLayout;
         }
         public void Back() {
-            FastColoredTextBox tb = inputTextBox as FastColoredTextBox;
+            FastColoredTextBox tb = inputTextBox;
             if (tb.UndoEnabled)
                 tb.Undo();
         }
         public void Next() {
-            FastColoredTextBox tb = inputTextBox as FastColoredTextBox;
+            FastColoredTextBox tb = inputTextBox;
             if (tb.RedoEnabled)
                 tb.Redo();
         }
@@ -45,7 +45,7 @@ namespace laba1
         public void Copy() { if (inputTextBox.SelectionLength > 0) { inputTextBox.Copy(); } }
         public void Cut() { if (inputTextBox.SelectionLength > 0) { inputTextBox.Cut(); } }
         public void Help() { MessageBox.Show("Описание функций меню\r\n\r\nФайл - производит действия с файлами\r\n\r\nСоздать - создает файл\r\nОткрыть - открывает файл\r\nСохранить - сохраняет изменения в файле\r\nСохранить как - сохраняет изменения в новый файл\r\nВыход - осуществляет выход из программы\r\n\r\nПравка - осуществляет изменения в файле\r\n\r\nОтменить - отменяет последнее изменение\r\nПовторить - повторяет последнее действие\r\nВырезать - вырезает выделенный фрагмент\r\nКопировать - копирует выделенный фрагмент\r\nВставить - вставляет выделенный фрагмент\r\nУдалить - удаляет выделенный фрагмент\r\nВыделить все - выделяет весь текст\r\n\r\nСправка - показывает справочную информацию\r\n\r\nВызов справки - описывает функции меню\r\nО программе - содержит информацию о программе", "Справка"); }
-        public void About() { MessageBox.Show("Это текстовый редактор", "О программе"); }
+        public void About() { MessageBox.Show("Данная программа является результатом первой лабораторной работы Разработка пользовательского интерфейса (GUI) для языкового процессора по дисциплине Теория формальных языков и компиляторов. Целью работы было Разработать приложение – текстовый редактор. В дальнейшем он будет дополнен функциями языкового процессора.", "О программе"); }
         public void Create()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
