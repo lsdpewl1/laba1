@@ -243,12 +243,6 @@ namespace laba1
 
         private void buttonSave_Click(object sender, EventArgs e) { Save(); }
 
-        private void inputTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void SplitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
             // Обновление размеров элементов управления при изменении размера панелей
@@ -259,52 +253,5 @@ namespace laba1
             outputTextBox.Height = splitContainer1.Panel2.Height;
         }
 
-        private class LineNumberTextBox : RichTextBox
-        {
-            private int currentLine;
-
-            public LineNumberTextBox()
-            {
-                SetStyle(ControlStyles.UserPaint, true);
-                SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-                SetStyle(ControlStyles.DoubleBuffer, true);
-                SetStyle(ControlStyles.ResizeRedraw, true);
-            }
-
-            protected override void OnPaint(PaintEventArgs e)
-            {
-                base.OnPaint(e);
-                DrawLineNumbers(e.Graphics);
-            }
-
-            private void DrawLineNumbers(Graphics g)
-            {
-                int firstVisibleChar = GetCharIndexFromPosition(new Point(0, 0));
-                int firstVisibleLine = GetLineFromCharIndex(firstVisibleChar);
-                int lineHeight = Font.Height;
-                int yOffset = 2;
-
-                for (int i = firstVisibleLine; i < Lines.Length; i++)
-                {
-                    string lineText = (i + 1).ToString();
-                    g.DrawString(lineText, Font, Brushes.Black, 3, yOffset);
-                    yOffset += lineHeight;
-                }
-            }
-
-            protected override void OnVScroll(EventArgs e)
-            {
-                base.OnVScroll(e);
-                Invalidate();
-            }
-
-            protected override void OnTextChanged(EventArgs e)
-            {
-                base.OnTextChanged(e);
-                Invalidate();
-            }
-
-         
-        }
     }
 }
