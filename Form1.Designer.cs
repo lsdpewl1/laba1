@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,11 +71,11 @@
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonCopy = new System.Windows.Forms.Button();
             this.outputTextBox = new System.Windows.Forms.RichTextBox();
-            this.lineNumbersTextBox = new System.Windows.Forms.RichTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.inputTextBox = new System.Windows.Forms.RichTextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.inputTextBox = new FastColoredTextBoxNS.FastColoredTextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -82,6 +83,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inputTextBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -109,7 +111,7 @@
             this.saveAsToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(69, 30);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // createToolStripMenuItem
@@ -158,7 +160,7 @@
             this.delToolStripMenuItem,
             this.allToolStripMenuItem});
             this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
+            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(89, 30);
             this.правкаToolStripMenuItem.Text = "Правка";
             // 
             // backToolStripMenuItem
@@ -222,7 +224,7 @@
             this.списокЛитературыToolStripMenuItem,
             this.исходныйКодПрограммыToolStripMenuItem});
             this.текстToolStripMenuItem.Name = "текстToolStripMenuItem";
-            this.текстToolStripMenuItem.Size = new System.Drawing.Size(70, 29);
+            this.текстToolStripMenuItem.Size = new System.Drawing.Size(70, 30);
             this.текстToolStripMenuItem.Text = "Текст";
             // 
             // постановкаЗадачиToolStripMenuItem
@@ -276,7 +278,7 @@
             // пускToolStripMenuItem
             // 
             this.пускToolStripMenuItem.Name = "пускToolStripMenuItem";
-            this.пускToolStripMenuItem.Size = new System.Drawing.Size(67, 29);
+            this.пускToolStripMenuItem.Size = new System.Drawing.Size(67, 30);
             this.пускToolStripMenuItem.Text = "Пуск";
             // 
             // справкаToolStripMenuItem
@@ -285,7 +287,7 @@
             this.helpToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(97, 30);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // helpToolStripMenuItem
@@ -472,14 +474,6 @@
             this.outputTextBox.TabIndex = 4;
             this.outputTextBox.Text = "";
             // 
-            // lineNumbersTextBox
-            // 
-            this.lineNumbersTextBox.Location = new System.Drawing.Point(3, 3);
-            this.lineNumbersTextBox.Name = "lineNumbersTextBox";
-            this.lineNumbersTextBox.Size = new System.Drawing.Size(181, 800);
-            this.lineNumbersTextBox.TabIndex = 5;
-            this.lineNumbersTextBox.Text = "";
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -492,7 +486,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.inputTextBox);
-            this.splitContainer1.Panel1.Controls.Add(this.lineNumbersTextBox);
             // 
             // splitContainer1.Panel2
             // 
@@ -501,31 +494,51 @@
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 6;
             // 
-            // inputTextBox
-            // 
-            this.inputTextBox.Location = new System.Drawing.Point(44, 3);
-            this.inputTextBox.Name = "inputTextBox";
-            this.inputTextBox.Size = new System.Drawing.Size(731, 800);
-            this.inputTextBox.TabIndex = 7;
-            this.inputTextBox.Text = "";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 513);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 507);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(778, 28);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
-            this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 15);
-            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 21);
+            // 
+            // inputTextBox
+            // 
+            this.inputTextBox.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.inputTextBox.AutoScrollMinSize = new System.Drawing.Size(35, 22);
+            this.inputTextBox.BackBrush = null;
+            this.inputTextBox.CharHeight = 22;
+            this.inputTextBox.CharWidth = 12;
+            this.inputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.inputTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.inputTextBox.IsReplaceMode = false;
+            this.inputTextBox.Language = FastColoredTextBoxNS.Language.CSharp;
+            this.inputTextBox.Location = new System.Drawing.Point(3, 3);
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.Paddings = new System.Windows.Forms.Padding(0);
+            this.inputTextBox.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.inputTextBox.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("inputTextBox.ServiceColors")));
+            this.inputTextBox.Size = new System.Drawing.Size(750, 800);
+            this.inputTextBox.TabIndex = 8;
+            this.inputTextBox.Zoom = 100;
             // 
             // Form1
             // 
@@ -551,6 +564,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inputTextBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -599,11 +613,11 @@
         private System.Windows.Forms.Button buttonHelp;
         private System.Windows.Forms.Button buttonInfo;
         private System.Windows.Forms.RichTextBox outputTextBox;
-        public System.Windows.Forms.RichTextBox lineNumbersTextBox;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.RichTextBox inputTextBox;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private FastColoredTextBoxNS.FastColoredTextBox inputTextBox;
     }
 }
 
