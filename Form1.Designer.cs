@@ -73,14 +73,14 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.inputTextBox = new FastColoredTextBoxNS.FastColoredTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TokenType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Token = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -117,7 +117,7 @@
             this.saveAsToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(69, 30);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // createToolStripMenuItem
@@ -166,7 +166,7 @@
             this.delToolStripMenuItem,
             this.allToolStripMenuItem});
             this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
+            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(89, 30);
             this.правкаToolStripMenuItem.Text = "Правка";
             // 
             // backToolStripMenuItem
@@ -230,7 +230,7 @@
             this.списокЛитературыToolStripMenuItem,
             this.исходныйКодПрограммыToolStripMenuItem});
             this.текстToolStripMenuItem.Name = "текстToolStripMenuItem";
-            this.текстToolStripMenuItem.Size = new System.Drawing.Size(70, 29);
+            this.текстToolStripMenuItem.Size = new System.Drawing.Size(70, 30);
             this.текстToolStripMenuItem.Text = "Текст";
             // 
             // постановкаЗадачиToolStripMenuItem
@@ -284,7 +284,7 @@
             // пускToolStripMenuItem
             // 
             this.пускToolStripMenuItem.Name = "пускToolStripMenuItem";
-            this.пускToolStripMenuItem.Size = new System.Drawing.Size(67, 29);
+            this.пускToolStripMenuItem.Size = new System.Drawing.Size(67, 30);
             this.пускToolStripMenuItem.Text = "Пуск";
             // 
             // справкаToolStripMenuItem
@@ -293,7 +293,7 @@
             this.helpToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(97, 30);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // helpToolStripMenuItem
@@ -514,6 +514,7 @@
             this.inputTextBox.CharWidth = 12;
             this.inputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.inputTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.inputTextBox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.inputTextBox.IsReplaceMode = false;
             this.inputTextBox.Language = FastColoredTextBoxNS.Language.CSharp;
             this.inputTextBox.LeftBracket = '(';
@@ -543,24 +544,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(771, 293);
+            this.dataGridView1.Size = new System.Drawing.Size(771, 800);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 722);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
-            this.statusStrip1.TabIndex = 7;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 15);
             // 
             // code
             // 
@@ -601,6 +586,22 @@
             this.End.Name = "End";
             this.End.ReadOnly = true;
             this.End.Width = 150;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 722);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
+            this.statusStrip1.TabIndex = 7;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 15);
             // 
             // Form1
             // 

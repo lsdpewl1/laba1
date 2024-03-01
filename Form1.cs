@@ -250,14 +250,15 @@ namespace laba1
         {
             //const MARKS:i32 = 100; 
             Keyword,
+            Identifier,
+            Delimiter,
+            Colon,
             DataType,
             Equally,
-            Semicolon,
-            Plus,
             Minus,
-            Delimiter,
-            Identifier,
+            Plus,
             Number,
+            Semicolon,
             Invalid
         }
 
@@ -268,20 +269,22 @@ namespace laba1
             Dictionary<LexemeType, int> lexemeCodes = new Dictionary<LexemeType, int>()
     {
         { LexemeType.Keyword, 1 },
-        { LexemeType.Delimiter, 3 },
         { LexemeType.Identifier, 2 },
-        { LexemeType.DataType, 4 },
-        { LexemeType.Equally, 5 },
-        { LexemeType.Plus, 7 },
-        { LexemeType.Minus, 6 },
-        { LexemeType.Semicolon, 9 },
-        { LexemeType.Number, 8 },
-        { LexemeType.Invalid, 10 }
+        { LexemeType.Delimiter, 3 },
+        { LexemeType.Colon, 4 },
+        { LexemeType.DataType, 5 },
+        { LexemeType.Equally, 6 },
+        { LexemeType.Minus, 7 },
+        { LexemeType.Plus, 8 },
+        { LexemeType.Number, 9 },
+        { LexemeType.Semicolon, 10 },        
+        { LexemeType.Invalid, 11 }
     };
 
             string[] keywords = { "const" };
             string[] delimiters = { " " };
-            string[] dataTypes = { ":i32" };
+            string[] colons = { ":" };
+            string[] dataTypes = { "i32" };
             string[] equallies = { "=" };
             string[] pluses = { "+" };
             string[] minuses = { "-" };
@@ -302,6 +305,20 @@ namespace laba1
                     {
                         lexemes.Add(new Lexeme(lexemeCodes[LexemeType.Keyword], LexemeType.Keyword, input, position, position + keyword.Length - 1));
                         position += keyword.Length;
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found) continue;
+
+                //:
+                foreach (string op in colons)
+                {
+                    if (input.Substring(position).StartsWith(op))
+                    {
+                        lexemes.Add(new Lexeme(lexemeCodes[LexemeType.Colon], LexemeType.Colon, input, position, position + op.Length - 1));
+                        position += op.Length;
                         found = true;
                         break;
                     }
