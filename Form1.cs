@@ -3,16 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.Timer;
 
 namespace laba1
 {
@@ -120,7 +125,7 @@ namespace laba1
             statusStrip1.Items.Add(timeLabel);
             statusStrip1.Items.Add(layoutLabel);
 
-            var timer = new Timer { Interval = 1000 };
+            var timer = new System.Windows.Forms.Timer { Interval = 1000 };
             timer.Tick += UpdateStatusLabels;
             timer.Start();
         }
@@ -228,42 +233,9 @@ namespace laba1
             //Application.Exit();
         }
 
-        public class Lexeme
-        {
-            public int Code { get; set; }
-            public LexemeType Type { get; set; }
-            public string Token { get; set; }
-            public int StartPosition { get; set; }
-            public int EndPosition { get; set; }
-
-            public Lexeme(int code, LexemeType type, string input, int startPosition, int endPosition)
-            {
-                Code = code;
-                Type = type;
-                Token = input.Substring(startPosition, endPosition - startPosition + 1);
-                StartPosition = startPosition;
-                EndPosition = endPosition;
-            }
-        }
-
-        public enum LexemeType
-        {
-            //const MARKS:i32 = 100; 
-            Keyword,
-            Identifier,
-            Delimiter,
-            Colon,
-            DataType,
-            Equally,
-            Minus,
-            Plus,
-            Number,
-            Semicolon,
-            Invalid
-        }
-
         private void buttonPlay_Click(object sender, EventArgs e)
         {
+     
             string input = inputTextBox.Text;
 
             Dictionary<LexemeType, int> lexemeCodes = new Dictionary<LexemeType, int>()
@@ -277,10 +249,12 @@ namespace laba1
         { LexemeType.Minus, 7 },
         { LexemeType.Plus, 8 },
         { LexemeType.Number, 9 },
-        { LexemeType.Semicolon, 10 },        
-        { LexemeType.Invalid, 11 }
+        { LexemeType.Semicolon, 10 },
+        { LexemeType.Invalid, 11 },
+        { LexemeType.EndStr, 12 },
+        { LexemeType.NewStr, 13 }
     };
-
+            
             string[] keywords = { "const" };
             string[] delimiters = { " " };
             string[] colons = { ":" };
@@ -289,7 +263,9 @@ namespace laba1
             string[] pluses = { "+" };
             string[] minuses = { "-" };
             string[] semicolones = { ";" };
-            
+            char[] endstrings = { '\r' };
+            char[] newstrings = { '\n' };
+
 
             List<Lexeme> lexemes = new List<Lexeme>();
 
@@ -339,7 +315,7 @@ namespace laba1
                 }
 
                 if (found) continue;
-                  
+
                 //=
                 foreach (string op in equallies)
                 {
@@ -394,7 +370,7 @@ namespace laba1
                     }
                 }
 
-                
+
 
                 if (found) continue;
 
@@ -405,6 +381,34 @@ namespace laba1
                     {
                         lexemes.Add(new Lexeme(lexemeCodes[LexemeType.Delimiter], LexemeType.Delimiter, input, position, position + delimiter.Length - 1));
                         position += delimiter.Length;
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found) continue;
+
+                //  \0
+                foreach (char endstr in endstrings)
+                {
+                    if (input[position]==endstr)
+                    {
+                        lexemes.Add(new Lexeme(lexemeCodes[LexemeType.EndStr], LexemeType.EndStr, input, position, position));
+                        position++;
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found) continue;
+
+                //  \n
+                foreach (char newstr in newstrings)
+                {
+                    if (input[position] == newstr)
+                    {
+                        lexemes.Add(new Lexeme(lexemeCodes[LexemeType.NewStr], LexemeType.NewStr, input, position, position));
+                        position++;
                         found = true;
                         break;
                     }
@@ -443,11 +447,33 @@ namespace laba1
                 }
             }
 
-            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();//*
+
+            
+            Parser parser = new Parser(lexemes);
+
+            parser.Parse(dataGridView2);//*
+
+            //foreach (LexemeType expected in parser.expectedLexemes)
+            //{
+            //    if (!parser.foundLexemes.Contains(expected))
+            //    {
+            //        dataGridView1.Rows.Add($"Ожидалась лексема: {expected}");
+            //        parser.counter++;
+            //    }
+            //}
+
+            label1.Text = "Количество ошибок: " + parser.counter;
+            if (parser.counter == 0)
+            {
+                dataGridView2.Rows.Add("Ошибок нет");//*
+            }
+
             foreach (Lexeme lexeme in lexemes)
             {
                 dataGridView1.Rows.Add(lexeme.Code, lexeme.Type, lexeme.Token, lexeme.StartPosition, lexeme.EndPosition);
             }
+            
         }
 
 
