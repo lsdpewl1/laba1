@@ -233,9 +233,8 @@ namespace laba1
             //Application.Exit();
         }
 
-        private void buttonPlay_Click(object sender, EventArgs e)
+        void start()
         {
-     
             string input = inputTextBox.Text;
 
             Dictionary<LexemeType, int> lexemeCodes = new Dictionary<LexemeType, int>()
@@ -254,7 +253,7 @@ namespace laba1
         { LexemeType.EndStr, 12 },
         { LexemeType.NewStr, 13 }
     };
-            
+
             string[] keywords = { "const" };
             string[] delimiters = { " " };
             string[] colons = { ":" };
@@ -391,7 +390,7 @@ namespace laba1
                 //  \0
                 foreach (char endstr in endstrings)
                 {
-                    if (input[position]==endstr)
+                    if (input[position] == endstr)
                     {
                         lexemes.Add(new Lexeme(lexemeCodes[LexemeType.EndStr], LexemeType.EndStr, input, position, position));
                         position++;
@@ -449,19 +448,12 @@ namespace laba1
 
             dataGridView2.Rows.Clear();//*
 
-            
+
             Parser parser = new Parser(lexemes);
 
             parser.Parse(dataGridView2);//*
 
-            //foreach (LexemeType expected in parser.expectedLexemes)
-            //{
-            //    if (!parser.foundLexemes.Contains(expected))
-            //    {
-            //        dataGridView1.Rows.Add($"Ожидалась лексема: {expected}");
-            //        parser.counter++;
-            //    }
-            //}
+
 
             label1.Text = "Количество ошибок: " + parser.counter;
             if (parser.counter == 0)
@@ -473,10 +465,18 @@ namespace laba1
             {
                 dataGridView1.Rows.Add(lexeme.Code, lexeme.Type, lexeme.Token, lexeme.StartPosition, lexeme.EndPosition);
             }
+        }
+
+        private void buttonPlay_Click(object sender, EventArgs e)
+        {
+
+            start();
             
         }
 
-
-
+        private void пускToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            start();
+        }
     }
 }
