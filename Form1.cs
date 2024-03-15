@@ -478,5 +478,48 @@ namespace laba1
         {
             start();
         }
+
+        private void постановкаЗадачиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Тема работы: Объявление целочисленной константы с инициализацией на языке Rust\r\n\r\nОсобенности языка: \r\nКонстанты – это элементы данных, значения которых известны и в процессе выполнения программы не изменяются.\r\nДля описания констант в языке Rust используется служебное слово const.\r\nФормат записи: const имя_константы:тип_данных=значение;.\r\n\r\n Примеры верных строк из языка:\r\n 1. const abc:i32 = 123; \r\n 2. const bcd:i32=123; \r\n3. const cde:i32 = -123;", "Постановка задачи");
+
+        }
+
+        private void грамматикаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Разработка грамматики\r\nОпределим грамматику целочисленных констант языка RUST G[‹Def›] в нотации Хомского с продукциями P:\r\n1) DEF -> ‘const’ CONST\r\n2) CONST -> ‘_’ ID\r\n3) ID ->letter IDREM\r\n4) IDREM -> letter IDREM\r\n5) IDREM -> ‘:’ TYPE\r\n6) TYPE -> ‘i32’ EQUAL\r\n7) EQUAL -> ‘=’ NUM\r\n8) NUM -> [+ | -] NUMBER\r\n9) NUMBER -> digit NUMBERREM\r\n10) NUMBERREM -> digit NUMBERREM\r\n11) NUMBERREM -> ;\r\n•\t‹Digit› → “0” | “1” | “2” | “3” | “4” | “5” | “6” | “7” | “8” | “9”\r\n•\t‹Letter› → “a” | “b” | “c” | ... | “z” | “A” | “B” | “C” | ... | “Z”\r\nСледуя введенному формальному определению грамматики, представим G[‹Def›] ее составляющими:\r\n•\tZ = ‹Def›;\r\n•\tVT = {a, b, c, ..., z, A, B, C, ..., Z, _, =, +, -, ;, ., 0, 1, 2, ..., 9};\r\n•\tVN = {DEF, CONST, ID, IDREM, TYPE, EQUAL, NUM, NUMBER, NUMBERREM}.\r\n", "Грамматика");
+        }
+
+        private void классификацияГрамматикиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Согласно классификации Хомского, грамматика G[‹Def›] является автоматной.\r\nПравила (1)-(11) относятся к классу праворекурсивных продукций (A → aB | a | ε):\r\n1) DEF -> ‘const’ CONST\r\n2) CONST -> ‘_’ ID\r\n3) ID ->letter IDREM\r\n4) IDREM -> letter IDREM\r\n5) IDREM -> ‘:’ TYPE\r\n6) TYPE -> ‘i32’ EQUAL\r\n7) EQUAL -> ‘=’ NUM\r\n8) NUM -> [+ | -] NUMBER\r\n9) NUMBER -> digit NUMBERREM\r\n10) NUMBERREM -> digit NUMBERREM\r\n11) NUMBERREM -> ;\r\n", "Классификация грамматики");
+        }
+
+        private void методАнализаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Граф автоматной грамматики", "Метод анализа");
+        }
+
+        private void диагностикаИНейтрализацияОшибокToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("По методу Айронса", "Диагностика и нейтрализация ошибок");
+        }
+
+        private void тестовыйПримерToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("", "Тестовый пример");
+            Process.Start("test.html");
+        }
+
+        private void списокЛитературыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("1. Шорников Ю.В. Теория и практика языковых процессоров : учеб. пособие / Ю.В. Шорников. – Новосибирск: Изд-во НГТУ, 2004.\r\n2. Gries D. Designing Compilers for Digital Computers. New York, Jhon Wiley, 1971. 493 p.\r\n3. Теория формальных языков и компиляторов [Электронный ресурс] / Электрон. дан. URL: https://dispace.edu.nstu.ru/didesk/course/show/8594, свободный. Яз.рус. (дата обращения 01.04.2021).\r\n", "Список литературы");
+        }
+
+        private void исходныйКодПрограммыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("", "Исходный код программы");
+            Process.Start("listing.html");
+        }
     }
 }
