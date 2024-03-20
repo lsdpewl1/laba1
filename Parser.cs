@@ -15,6 +15,7 @@ namespace laba1
         public int counter;
         public List<LexemeType> expectedLexemes;
         public List<LexemeType> foundLexemes;
+        public string str;
 
         public Parser(List<Lexeme> lexemes)
         {
@@ -34,7 +35,9 @@ namespace laba1
             {
                 if (lexemes[position].Type == LexemeType.Keyword)
                 {
+                    str += lexemes[position].Token;
                     position++;
+                    
                     DEFREM(dataGridView1);
                 }
                 else if (lexemes[position].Type == LexemeType.Invalid)
@@ -67,13 +70,14 @@ namespace laba1
                 counter++;
             }
         }
-
+         
         private void DEFREM(DataGridView dataGridView1)
         {
             try
             {
                 if (lexemes[position].Type == LexemeType.Delimiter)
                 {
+                    str += lexemes[position].Token;
                     position++;
                     ID(dataGridView1);
                 }
@@ -113,6 +117,7 @@ namespace laba1
             {
                 if (lexemes[position].Type == LexemeType.Identifier)
                 {
+                    str += lexemes[position].Token;
                     position++;
                     IDREM(dataGridView1);
                 }
@@ -152,6 +157,7 @@ namespace laba1
             {
                 if (lexemes[position].Type == LexemeType.Colon)
                 {
+                    str += lexemes[position].Token;
                     position++;
                     TYPE(dataGridView1);
                 }
@@ -192,6 +198,7 @@ namespace laba1
 
                 if (lexemes[position].Type == LexemeType.DataType)
                 {
+                    str += lexemes[position].Token;
                     position++;
                     TYPEREM(dataGridView1);
                 }
@@ -235,6 +242,7 @@ namespace laba1
                     {
                         if (lexemes[position].Type == LexemeType.Equally)
                         {
+                            str += lexemes[position].Token;
                             position++;
                             EQUAL(dataGridView1);
                         }
@@ -269,6 +277,7 @@ namespace laba1
 
                 else if (lexemes[position].Type == LexemeType.Equally)
                 {
+                    str += lexemes[position].Token;
                     position++;
                     EQUAL(dataGridView1);
                 }
@@ -310,6 +319,7 @@ namespace laba1
                 position++;
                 if ((lexemes[position].Type == LexemeType.Plus) || (lexemes[position].Type == LexemeType.Minus))
                 {
+                    str += lexemes[position].Token;
                     position++;
                     NUMBER(dataGridView1);
                 }
@@ -320,6 +330,7 @@ namespace laba1
             }
             else if ((lexemes[position].Type == LexemeType.Plus) || (lexemes[position].Type == LexemeType.Minus))
             {
+                str += lexemes[position].Token;
                 position++;
                 NUMBER(dataGridView1);
             }
@@ -337,6 +348,7 @@ namespace laba1
 
                 if (lexemes[position].Type == LexemeType.Number)
                 {
+                    str += lexemes[position].Token;
                     position++;
                     NUMBERREM(dataGridView1);
                 }
@@ -375,6 +387,7 @@ namespace laba1
             {
                 if (lexemes[position].Type == LexemeType.Semicolon)
                 {
+                    str += lexemes[position].Token;
                     position++;
                     END(dataGridView1);
 
@@ -425,6 +438,7 @@ namespace laba1
                     position++;
                     if (lexemes[position].Type == LexemeType.NewStr)
                     {
+                        str += lexemes[position].Token;
                         position++;
                         DEF(dataGridView1);
                     }

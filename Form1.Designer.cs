@@ -72,6 +72,7 @@
             this.buttonCopy = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.inputTextBox = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +85,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.correctString = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -108,7 +111,7 @@
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(778, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1181, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -121,7 +124,7 @@
             this.saveAsToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(69, 32);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // createToolStripMenuItem
@@ -170,7 +173,7 @@
             this.delToolStripMenuItem,
             this.allToolStripMenuItem});
             this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
-            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
+            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(89, 32);
             this.правкаToolStripMenuItem.Text = "Правка";
             // 
             // backToolStripMenuItem
@@ -234,7 +237,7 @@
             this.списокЛитературыToolStripMenuItem,
             this.исходныйКодПрограммыToolStripMenuItem});
             this.текстToolStripMenuItem.Name = "текстToolStripMenuItem";
-            this.текстToolStripMenuItem.Size = new System.Drawing.Size(70, 29);
+            this.текстToolStripMenuItem.Size = new System.Drawing.Size(70, 32);
             this.текстToolStripMenuItem.Text = "Текст";
             // 
             // постановкаЗадачиToolStripMenuItem
@@ -296,7 +299,7 @@
             // пускToolStripMenuItem
             // 
             this.пускToolStripMenuItem.Name = "пускToolStripMenuItem";
-            this.пускToolStripMenuItem.Size = new System.Drawing.Size(67, 29);
+            this.пускToolStripMenuItem.Size = new System.Drawing.Size(67, 32);
             this.пускToolStripMenuItem.Text = "Пуск";
             this.пускToolStripMenuItem.Click += new System.EventHandler(this.пускToolStripMenuItem_Click);
             // 
@@ -306,20 +309,20 @@
             this.helpToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(97, 32);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(238, 34);
             this.helpToolStripMenuItem.Text = "Вызов справки";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(238, 34);
             this.aboutToolStripMenuItem.Text = "О программе";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -513,10 +516,12 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView2);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(776, 609);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Size = new System.Drawing.Size(798, 609);
             this.splitContainer1.SplitterDistance = 303;
             this.splitContainer1.TabIndex = 6;
             // 
@@ -542,7 +547,6 @@
             this.inputTextBox.CharWidth = 12;
             this.inputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.inputTextBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.inputTextBox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.inputTextBox.IsReplaceMode = false;
             this.inputTextBox.Language = FastColoredTextBoxNS.Language.CSharp;
             this.inputTextBox.LeftBracket = '(';
@@ -558,6 +562,14 @@
             this.inputTextBox.Size = new System.Drawing.Size(770, 800);
             this.inputTextBox.TabIndex = 8;
             this.inputTextBox.Zoom = 100;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(341, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 20);
+            this.label2.TabIndex = 3;
             // 
             // label1
             // 
@@ -578,7 +590,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
             this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(1166, 765);
+            this.dataGridView2.Size = new System.Drawing.Size(770, 255);
             this.dataGridView2.TabIndex = 0;
             // 
             // code
@@ -604,7 +616,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1166, 765);
+            this.dataGridView1.Size = new System.Drawing.Size(770, 255);
             this.dataGridView1.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -654,7 +666,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 730);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(778, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1181, 22);
             this.statusStrip1.TabIndex = 7;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -663,19 +675,39 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 15);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(897, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(121, 20);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Верная строка";
+            // 
+            // correctString
+            // 
+            this.correctString.Location = new System.Drawing.Point(779, 100);
+            this.correctString.Name = "correctString";
+            this.correctString.ReadOnly = true;
+            this.correctString.Size = new System.Drawing.Size(400, 600);
+            this.correctString.TabIndex = 9;
+            this.correctString.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 752);
+            this.ClientSize = new System.Drawing.Size(1181, 752);
+            this.Controls.Add(this.correctString);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(1200, 1197);
-            this.MinimumSize = new System.Drawing.Size(800, 797);
+            this.MaximumSize = new System.Drawing.Size(1203, 808);
+            this.MinimumSize = new System.Drawing.Size(1203, 808);
             this.Name = "Form1";
             this.Text = "Compiler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
@@ -754,6 +786,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn code;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox correctString;
     }
 }
 

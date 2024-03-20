@@ -28,6 +28,7 @@ namespace laba1
         private ToolStripLabel dateLabel;
         private ToolStripLabel timeLabel;
         private ToolStripLabel layoutLabel;
+        
         private void UpdateStatusLabels(object sender, EventArgs e)
         {
             dateLabel.Text = "" + DateTime.Now.ToLongDateString();
@@ -456,9 +457,11 @@ namespace laba1
 
 
             label1.Text = "Количество ошибок: " + parser.counter;
+            correctString.Text = "" + parser.str;
             if (parser.counter == 0)
             {
                 dataGridView2.Rows.Add("Ошибок нет");//*
+                
             }
 
             foreach (Lexeme lexeme in lexemes)
@@ -520,6 +523,11 @@ namespace laba1
         {
             //MessageBox.Show("", "Исходный код программы");
             Process.Start("listing.html");
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
